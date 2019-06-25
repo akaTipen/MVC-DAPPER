@@ -1,0 +1,36 @@
+﻿@using MVC_DAPPER.Models
+@model IEnumerable<EmployeeModel>
+
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Join Date</th>
+            <th>Photo</th>
+            <th>Height</th>
+            <th>Weight</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int i = 1; }
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@i</td>
+            <td>@item.EmployeeName</td>
+            <td>@item.JoinDate</td>
+            <td><a>download document</a></td>
+            <td>@item.Height</td>
+            <td>@item.Weight</td>
+        </tr>
+            i++;
+        }
+    </tbody>
+</table>
