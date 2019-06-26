@@ -15,9 +15,9 @@ namespace MVC_DAPPER.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult List()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "List Employee";
             List<EmployeeModel> model = new EmployeeRepo().EmployeeList();
             return View(model);
         }
@@ -27,6 +27,53 @@ namespace MVC_DAPPER.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult EmployeeData(int? id)
+        {
+            EmployeeModel model = new EmployeeModel();
+            if (id != null)
+            {
+                model = new EmployeeRepo().GetEmployee(id);
+            }
+            model.Departments = new DepartmentRepo().DepartmentList();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EmployeeData(EmployeeModel model)
+        {
+            try
+            {
+                byte[] file = null;
+                if (model.PhotoInput != null) {
+                    file = new byte[model.PhotoInput.ContentLength];
+                    model.PhotoInput.InputStream.Read(file, 0, file.Length);
+                }
+                if (model.EmployeeId == 0)
+                {
+                    new EmployeeRepo().InsertEmployee(model, file);
+                }
+                else {
+                    new EmployeeRepo().UpdateEmployee(model, file);
+                }
+
+                
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        public FileResult GetReport(int Id)
+        {
+            EmployeeModel model = new EmployeeRepo().GetEmployee(Id);    
+            return File(model.Photo, "application/pdf");
         }
     }
 }

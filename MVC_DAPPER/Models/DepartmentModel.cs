@@ -10,7 +10,6 @@ namespace MVC_DAPPER.Models
         public int DepartmentId { get; set; }
         public string DepartmenCode { get; set; }
         public string DepartmenName { get; set; }
-
         public ICollection<EmployeeModel> Employees { get; set; }
-}
+    }
 }

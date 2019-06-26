@@ -1,0 +1,49 @@
+﻿@using MVC_DAPPER.Models
+@model IEnumerable<EmployeeModel>
+
+@{
+    ViewBag.Title = "List";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>
+    <a href="@Url.Action("EmployeeData", "Home")">Create New</a>
+</p>
+
+<table class="table table-bordered table-striped datatable">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Join Date</th>
+            <th>Photo</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int i = 1; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.EmployeeName</td>
+                <td>@item.JoinDate</td>
+                <td><a onclick="GetClientReport(@item.EmployeeId)">download document</a></td>
+                <td>@item.Height</td>
+                <td>@item.Weight</td>
+                <td><a href="@Url.Action("EmployeeData", "Home", new { id = @item.EmployeeId })">Edit</a> | <a>Delete</a></td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+
+
+<script>
+    function GetClientReport(id) {
+        window.open('/Home/GetReport/' + id, "_blank");
+};
+</script>
