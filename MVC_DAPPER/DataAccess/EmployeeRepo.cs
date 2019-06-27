@@ -15,7 +15,7 @@ namespace MVC_DAPPER.DataAccess
         public List<EmployeeModel> EmployeeList()
         {
             List<EmployeeModel> ls = new List<EmployeeModel>();
-            ls = dbTran.DbToList<EmployeeModel>("Sp_Employee_list", null, true);
+            ls = dbTran.DbToList<EmployeeModel>("Sp_Get_Employee", null, true);
             return ls;
         }
 
@@ -62,7 +62,7 @@ namespace MVC_DAPPER.DataAccess
         }
 
         public void DeleteEmployee(int Id) {
-            dbTran.DbExecute("Sp_Delete_Employee", new { ID = Id }, true);
+            dbTran.DbExecute("Sp_Delete_Employee", new { EmployeeId = Id }, true);
         }
     }
 }

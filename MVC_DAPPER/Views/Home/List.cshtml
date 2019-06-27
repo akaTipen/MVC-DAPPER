@@ -19,6 +19,7 @@
             <th>Photo</th>
             <th>Height</th>
             <th>Weight</th>
+            <th>Departement</th>
             <th></th>
         </tr>
     </thead>
@@ -27,14 +28,15 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@i</td>
+                <td>@i.</td>
                 <td>@item.EmployeeName</td>
                 <td>@item.JoinDate</td>
                 <td><a onclick="GetClientReport(@item.EmployeeId)">download document</a></td>
                 <td>@item.Height</td>
                 <td>@item.Weight</td>
+                <td>@item.DepartmenName</td>
                 <td><a href="@Url.Action("EmployeeData", "Home", new { id = @item.EmployeeId })">Edit</a> | 
-                    <a href="@Url.Action("DeleteData", "Home", new { id @item.EmployeeId })">Delete</a></td>
+                    <a href="@Url.Action("DeleteData", "Home", new { id = @item.EmployeeId })">Delete</a></td>
             </tr>
             i++;
         }

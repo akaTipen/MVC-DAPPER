@@ -13,8 +13,8 @@
     $('.datatable').DataTable({
         "order": [],
         "columnDefs": [
-            { orderable: false, targets: -1 },
-            { orderable: false, targets: 0 }
+            { className: 'dt-body-center', orderable: false, targets: -1 },
+            { width: "2%", orderable: false, targets: 0 }
         ]
     });
 });

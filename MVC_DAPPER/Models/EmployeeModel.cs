@@ -20,6 +20,8 @@ namespace MVC_DAPPER.Models
         public float Weight { get; set; }
         [DisplayName("Department")]
         public int DepartmentId { get; set; }
+
+        public string DepartmenName { get; set; }
         public List<DepartmentModel> Departments { get; set; }
     }
 }
