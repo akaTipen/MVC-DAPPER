@@ -17,7 +17,6 @@ namespace MVC_DAPPER.Controllers
 
         public ActionResult List()
         {
-            ViewBag.Message = "List Employee";
             List<EmployeeModel> model = new EmployeeRepo().EmployeeList();
             return View(model);
         }
@@ -59,8 +58,6 @@ namespace MVC_DAPPER.Controllers
                     new EmployeeRepo().UpdateEmployee(model, file);
                 }
 
-                
-
                 return RedirectToAction("Index");
             }
             catch
@@ -69,6 +66,10 @@ namespace MVC_DAPPER.Controllers
             }
         }
 
+        public ActionResult DeleteData(int id) {
+            new EmployeeRepo().DeleteEmployee(id);
+            return RedirectToAction("List");
+        }
 
         public FileResult GetReport(int Id)
         {

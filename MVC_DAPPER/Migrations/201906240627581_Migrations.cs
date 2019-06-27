@@ -12,8 +12,8 @@ namespace MVC_DAPPER.Migrations
                 c => new
                     {
                         DepartmentId = c.Int(nullable: false, identity: true),
-                        DepartmenCode = c.String(),
-                        DepartmenName = c.String(),
+                        DepartmenCode = c.String(maxLength: 250),
+                        DepartmenName = c.String(maxLength: 250),
                     })
                 .PrimaryKey(t => t.DepartmentId);
             
@@ -22,7 +22,7 @@ namespace MVC_DAPPER.Migrations
                 c => new
                     {
                         EmployeeId = c.Int(nullable: false, identity: true),
-                        EmployeeName = c.String(),
+                        EmployeeName = c.String(maxLength: 250),
                         JoinDate = c.DateTime(),
                         Photo = c.Binary(),
                         Height = c.Decimal(nullable: false, precision: 18, scale: 2),

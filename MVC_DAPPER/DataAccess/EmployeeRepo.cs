@@ -60,5 +60,9 @@ namespace MVC_DAPPER.DataAccess
             }, true);
 
         }
+
+        public void DeleteEmployee(int Id) {
+            dbTran.DbExecute("Sp_Delete_Employee", new { ID = Id }, true);
+        }
     }
 }

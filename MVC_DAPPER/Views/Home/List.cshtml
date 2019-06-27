@@ -2,10 +2,9 @@
 @model IEnumerable<EmployeeModel>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "List Employee";
 }
 <h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
 
 <p>
     <a href="@Url.Action("EmployeeData", "Home")">Create New</a>
@@ -34,7 +33,8 @@
                 <td><a onclick="GetClientReport(@item.EmployeeId)">download document</a></td>
                 <td>@item.Height</td>
                 <td>@item.Weight</td>
-                <td><a href="@Url.Action("EmployeeData", "Home", new { id = @item.EmployeeId })">Edit</a> | <a>Delete</a></td>
+                <td><a href="@Url.Action("EmployeeData", "Home", new { id = @item.EmployeeId })">Edit</a> | 
+                    <a href="@Url.Action("DeleteData", "Home", new { id @item.EmployeeId })">Delete</a></td>
             </tr>
             i++;
         }
