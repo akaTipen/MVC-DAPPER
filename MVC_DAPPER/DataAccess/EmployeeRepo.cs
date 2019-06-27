@@ -19,7 +19,7 @@ namespace MVC_DAPPER.DataAccess
             return ls;
         }
 
-        public EmployeeModel GetEmployee(int? Id)
+        public EmployeeModel GetEmployee(Nullable<int> Id)
         {
             EmployeeModel model = new EmployeeModel();
             model = dbTran.DbToList<EmployeeModel>("Sp_Get_Employee", new { ID = Id }, true).FirstOrDefault();

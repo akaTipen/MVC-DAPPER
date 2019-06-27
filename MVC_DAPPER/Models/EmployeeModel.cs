@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MVC_DAPPER.Models
 {
-    public class EmployeeModel
+    public partial class EmployeeModel
     {
         public int EmployeeId { get; set; }
         [DisplayName("Nama")]
@@ -21,6 +21,7 @@ namespace MVC_DAPPER.Models
         [DisplayName("Department")]
         public int DepartmentId { get; set; }
 
+        public virtual DepartmentModel DepartmentModel { get; set; }
         public string DepartmenName { get; set; }
         public List<DepartmentModel> Departments { get; set; }
     }

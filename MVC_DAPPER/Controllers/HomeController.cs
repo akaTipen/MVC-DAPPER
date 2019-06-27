@@ -60,9 +60,11 @@ namespace MVC_DAPPER.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                model.Departments = new DepartmentRepo().DepartmentList();
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(model);
             }
         }
 

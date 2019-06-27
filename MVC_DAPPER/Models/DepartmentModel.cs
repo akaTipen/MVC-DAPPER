@@ -5,8 +5,13 @@ using System.Web;
 
 namespace MVC_DAPPER.Models
 {
-    public class DepartmentModel
+    public partial class DepartmentModel
     {
+        public DepartmentModel()
+        {
+            this.Employees = new HashSet<EmployeeModel>();
+        }
+
         public int DepartmentId { get; set; }
         public string DepartmenCode { get; set; }
         public string DepartmenName { get; set; }
