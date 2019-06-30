@@ -18,3 +18,23 @@
         ]
     });
 });
+
+function isEmptyString(str) {
+    return ($.trim(str) === "");
+}
+
+function renderDate(data, type, val) {
+    if (!isEmptyString(data)) {
+        return data.substr(0, 10).split('-').reverse().join('-');
+    }
+    return '';
+}
+
+function refreshTable(table, url, callback) {
+    if (url) {
+        var obj = table.dataTable().fnSettings();
+        obj.sAjaxSource = url;
+    }
+    var dtable = table.dataTable({ bRetrieve: true });
+    dtable._fnDraw();
+}
