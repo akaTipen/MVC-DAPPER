@@ -35,8 +35,10 @@
                 <td>@item.Height</td>
                 <td>@item.Weight</td>
                 <td>@item.DepartmenName</td>
-                <td><a href="@Url.Action("EmployeeData", "Home", new { id = @item.EmployeeId })">Edit</a> | 
-                    <a href="@Url.Action("DeleteData", "Home", new { id = @item.EmployeeId })">Delete</a></td>
+                <td>
+                    <a href="@Url.Action("EmployeeData", "Home", new { id = @item.EmployeeId })">Edit</a> |
+                    <a href="@Url.Action("DeleteData", "Home", new { id = @item.EmployeeId })">Delete</a>
+                </td>
             </tr>
             i++;
         }
@@ -47,5 +49,5 @@
 <script>
     function GetClientReport(id) {
         window.open('/Home/GetReport/' + id, "_blank");
-};
+    };
 </script>
